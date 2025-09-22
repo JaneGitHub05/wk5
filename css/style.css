@@ -8,14 +8,14 @@ h1 {
 
 img {
     border: 10px solid blue;
-    padding: 50px;
-    width: 300px;
+    padding: 30px;
+    width: 200px;
     background-color: #808080;
 }
 
 div {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 40px;
     align-items: center;
 }
