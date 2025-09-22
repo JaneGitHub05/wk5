@@ -1,0 +1,21 @@
+body {
+    background-color: #d3d3d3;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    border: 10px solid blue;
+    padding: 50px;
+    width: 300px;
+    background-color: #808080;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
