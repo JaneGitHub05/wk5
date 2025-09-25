@@ -1,0 +1,130 @@
+/* --- Base (Mobile First) --- */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    flex-shrink: 1;
+    flex-grow: 1;
+    flex-basis: 90%;
+    /* flex-basis practice */
+}
+
+/* STUDENT CODE STARTS HERE */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: 45% 45%;
+        justify-items: center;
+    }
+
+    /* 2-1-2-1 pattern */
+    .grid>div:nth-child(3n) {
+        /* grid-column 1 / 3; */
+        grid-column: 1 / -1;
+        width: 50%;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .gallery img {
+        flex: 1 1 30%;
+    }
+
+    /* background highlight for even-numbered grid cards */
+    .grid>div:nth-child(even) {
+        background-color: #f0f0f0;
+    }
+
+    /*? to match provided screenshot - screenshot doesn't have thick black border/grayscale for even grid images */
+    .grid div:nth-child(even)>img {
+        border: none;
+        filter: grayscale(0%);
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid {
+        /*? tried min = 350px as specified in instructions, but didn't match with provided screenshot for large screen */
+        /*? i.e., when viewport width set to 1200px, each row would still have 2 cards instead of 3 */
+        /*? min = 300px fixed this outcome */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 10px;
+    }
+
+    .gallery {
+        justify-content: space-between;
+    }
+
+    .gallery>img {
+        flex: 1 1 200px;
+    }
+
+    .grid>div:nth-child(3n) {
+        grid-column: auto;
+        width: auto;
+    }
+
+    .grid>div {
+        transition: box-shadow 0.2s ease;
+    }
+
+    .grid>div:hover {
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .gallery {
+        display: none;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid>div {
+        border: solid black 1px;
+        page-break-inside: avoid;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .grid>div,
+    .gallery>img {
+        transition: none !important;
+    }
+
+    .grid>div:hover,
+    .gallery>img:hover {
+        scale: none !important;
+        box-shadow: none !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #111;
+        color: #eee;
+    }
+
+    .grid>div {
+        background-color: #111;
+        border: 1px solid #EB5B00;
+    }
+}
